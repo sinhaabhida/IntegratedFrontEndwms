@@ -1,0 +1,30 @@
+<div class="jumbotron center">
+  <img src="../../assets/img/logo.png">
+  <h1>Workflow Manager</h1>
+</div>
+<nav class="navbar navbar-inverse" (load)="accessUser()">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive='active'>
+        <a routerLink="/dashboard/home" *ngIf="user.role!='admin'">My View</a>
+      </li>
+      <li routerLinkActive='active' *ngIf="user.role=='admin'">
+        <a routerLink='/dashboard/users'>User Mangement</a>
+      </li>
+      <li routerLinkActive='active' *ngIf="user.role=='admin'">
+        <a routerLink='/dashboard/tasks'>Tasks</a>
+      </li>
+      <li routerLinkActive='active'>
+        <a routerLink='/dashboard/profile'>Profile</a>
+      </li>
+      <button routerLink='/dashboard/new_task' class="btn btn-basic navbar-btn">New Task</button>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a>Welcome {{user.firstName}}</a>
+      </li>
+      <button (click)="Logout()" class="btn btn-danger navbar-btn">Sign Out</button>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

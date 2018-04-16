@@ -1,0 +1,32 @@
+<div *ngIf="router.url=='/dashboard/users'">
+<table class="table table-hover table-stripped">
+    <thead style="background-color:#565656">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th><div routerLink="/dashboard/create_users" class="divButton">Create User</div></th>
+            <!-- <button class="btn btn-primary" >Create User</button> -->
+        </tr>
+    </thead>
+    <tbody>
+<tr *ngFor="let list of usersList">
+  <td>{{list[0]}}</td>
+  <td>{{list[1]}}&nbsp;{{list[2]}}</td>
+  <td>{{list[3]}}</td>
+  <td>{{list[4]}}</td>
+  <td><a [routerLink]="['/dashboard/edit_user',list[0]]">Edit</a><a (click)="delete(list[0])" style="padding-left:20px;">Delete</a></td>
+</tr>
+<tr *ngIf="usersList?.length==0">
+    <td></td>
+    <td></td>
+    <td style="text-align: center">No users Found</td>
+    <td></td>
+    <td></td>
+</tr>
+
+    </tbody>
+</table>
+</div>
+<router-outlet></router-outlet>

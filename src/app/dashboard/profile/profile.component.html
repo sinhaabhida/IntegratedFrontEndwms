@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 panel panel-default">
+    <form #profileForm="ngForm">
+      <h2>Your Profile</h2>
+      <div class="form-group">
+        <label>ID</label>
+        <input disabled type="text" name="Id" #Id="ngModel" [(ngModel)]="user.id" class="form-control">
+      </div>
+      <div class="form-group">
+          <label>First Name</label><br>
+          <input [disabled]="isEnabled==false" type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.firstName" class="form-control" [pattern]="namePattern" required>
+          <label class="text-danger" *ngIf="FirstName.touched && FirstName.errors?.required">Name is Required</label>
+          <label class="text-danger" *ngIf="FirstName.touched && FirstName.errors?.pattern">Invalid First Name</label>
+      </div>
+      <div class="form-group">
+          <label>Last Name</label>
+          <input [disabled]="isEnabled==false" type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.lastName" class="form-control" [pattern]="namePattern">
+          <label class="text-danger" *ngIf="LastName.touched && LastName.errors?.pattern">Invalid Last Name</label>
+      </div>
+      <div class="form-group">
+          <label>Email</label>
+          <input [disabled]="isEnabled==false" name="Email" #Email="ngModel" [(ngModel)]="user.email" type="email" class="form-control" required [pattern]="emailPattern">
+          <label class="text-danger" *ngIf="Email.touched && Email.errors?.required">Email is Required</label>
+          <label class="text-danger" *ngIf="Email.touched && Email.errors?.pattern">Invalid Email</label>
+      </div>
+      <div class="form-group">
+          <label>Password</label><br>
+          <input [placeholder]="isEnabled==true?'Please Enter the Password':''" [disabled]="isEnabled==false" name="Password" #Password="ngModel" [(ngModel)]="user.password" type="password" class="form-control" required minlength="6" maxlength="20">
+      
+          <label class="text-danger" *ngIf="Password.touched && (Password.errors?.minlength || Password.errors?.required)">Password should be 6-20 characters</label>
+      </div>
+      <div class="form-group">
+          <label>Role</label>
+          <select disabled name="Role" #Role="ngModel" [(ngModel)]="user.role" class="form-control" id="sel1" required>
+            <option value="developer">Developer</option>
+            <option value="tester">Tester</option>
+            <option value="admin">Admin</option>
+            <option value="qa">QA</option>
+            <option value="manager">Manager</option>
+          </select>
+          <label class="text-danger" *ngIf="Role.touched && Role.errors?.required">Please Select a Role</label>
+        </div>
+        <div class="form-group">
+          <input [disabled]="isEnabled==false || !profileForm.valid" class="btn btn-primary" type="submit" value="Save">
+          <input type="button" class="btn" (click)="isEnabled==false?isEnabled=true:isEnabled=false" [value]="isEnabled==true?'Cancel':'Edit'">
+        </div>
+  
+    </form>
+  </div>
+  </div>
+  </div>
+  

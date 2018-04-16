@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel panel-default">
+  <form #createUserForm="ngForm" (ngSubmit)="OnSubmit(createUserForm)">
+    <h2>Create User</h2>
+    <div class="form-group">
+        <label>First Name</label>
+        <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="user.firstName" class="form-control" [pattern]="namePattern" required>
+        <label class="text-danger" *ngIf="firstName.touched && firstName.errors?.required">Name is Required</label>
+        <label class="text-danger" *ngIf="firstName.touched && firstName.errors?.pattern">Invalid First Name</label>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" class="form-control" [pattern]="namePattern">
+        <label class="text-danger" *ngIf="lastName.touched && lastName.errors?.pattern">Invalid Last Name</label>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input name="email" #email="ngModel" [(ngModel)]="user.email" type="email" class="form-control" required [pattern]="emailPattern">
+        <label class="text-danger" *ngIf="email.touched && email.errors?.required">Email is Required</label>
+        <label class="text-danger" *ngIf="email.touched && email.errors?.pattern">Invalid Email</label>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input name="password" #password="ngModel" [(ngModel)]="user.password" type="password" class="form-control" required minlength="6" maxlength="20">
+        <label class="text-danger" *ngIf="password.touched && (password.errors?.minlength || password.errors?.required)">Password should be 6-20 characters</label>
+    </div>
+    <div class="form-group">
+        <label>Select Role</label>
+        <select name="role" #role="ngModel" [(ngModel)]="user.role" class="form-control" id="sel1" required>
+          <option value="developer">Developer</option>
+          <option value="tester">Tester</option>
+          <option value="qa">QA</option>
+          <option value="manager">Manager</option>
+        </select>
+        <label class="text-danger" *ngIf="role.touched && role.errors?.required">Please Select a Role</label>
+      </div>
+      <div class="form-group">
+        <input [disabled]="!createUserForm.valid" class="btn btn-primary" type="submit" value="Create">
+   <button type="button" class="btn btn-basic" routerLink="/dashboard/users">Cancel</button>
+      </div>
+
+  </form>
+</div>
+</div>
+</div>

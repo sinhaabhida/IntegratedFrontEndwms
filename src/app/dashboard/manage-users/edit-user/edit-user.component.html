@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel panel-default">
+  <form #updateForm="ngForm"(ngSubmit)="update()">
+    <h2>Edit User</h2>
+    <div class="form-group">
+        <label>First Name</label>
+        <input #firstName="ngModel" [(ngModel)]="user.firstName" type="text" name="firstName" class="form-control" [pattern]="namePattern" required>
+        <label class="text-danger" *ngIf="firstName.touched && firstName.errors?.required">Name is Required</label>
+        <label class="text-danger" *ngIf="firstName.touched && firstName.errors?.pattern">Invalid First Name</label>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input #lastName="ngModel" [(ngModel)]="user.lastName" type="text" name="lastName" class="form-control" [pattern]="namePattern">
+        <label class="text-danger" *ngIf="lastName.touched && lastName.errors?.pattern">Invalid Last Name</label>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input #email="ngModel" [(ngModel)]="user.email" name="email" type="email" class="form-control" [pattern]="emailPattern" required>
+        <label class="text-danger" *ngIf="email.touched && email.errors?.required">Email is Required</label>
+        <label class="text-danger" *ngIf="email.touched && email.errors?.pattern">Invalid Email</label>
+
+    </div>
+    <div class="form-group">
+        <label>Select Role</label>
+        <select #role="ngModel" [(ngModel)]="user.role" name="role" class="form-control" id="sel1" required>
+          <option value="developer">Developer</option>
+          <option value="tester">Tester</option>
+          <option value="qa">QA</option>
+          <option value="manager">Manager</option>
+        </select>
+        <label class="text-danger" *ngIf="role.touched && role.errors?.required">Please Select a Role</label>
+      </div>
+      <div class="form-group">
+        <input [disabled]="!updateForm.valid" class="btn btn-primary" type="submit" value="Update">
+   <button type="button" class="btn btn-basic" routerLink="/dashboard/users">Cancel</button>
+      </div>
+
+  </form>
+</div>
+</div>
+</div>
+

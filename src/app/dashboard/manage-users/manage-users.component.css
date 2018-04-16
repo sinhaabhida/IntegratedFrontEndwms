@@ -1,0 +1,23 @@
+button{
+    font-size: 100%;
+    margin-top:3%;
+}
+table{
+    width: 90%;
+    margin:5% auto;
+}
+thead{
+    background: #A9A9A9;
+     color: white;
+}
+table td a{
+    cursor: pointer;
+}
+
+.divButton{
+    cursor: pointer;
+    background-color: #2177B5;
+    width: 100px;;
+    padding-left: 10px;
+    padding-right: 10px;
+}

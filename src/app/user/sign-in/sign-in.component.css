@@ -1,0 +1,21 @@
+.login-button{
+	margin-top: 5px;
+ }
+ .form-group{
+	margin-bottom: 15px;
+ }
+.form-control input,
+ input::-webkit-input-placeholder {
+	font-size: 11px;
+	padding-top: 3px;
+ } 
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+ }
+input.ng-invalid.ng-dirty{
+	border-color: red;
+	box-shadow: red;
+    
+}

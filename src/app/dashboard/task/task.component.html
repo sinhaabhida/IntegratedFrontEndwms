@@ -1,0 +1,22 @@
+  <table class="table table-hover table-stripped">
+      <thead style="background-color: #565656">
+          <tr>
+              <th>Task ID</th>
+              <th>Task Name</th>
+              <th>Assigned To</th>
+              <th>Priority</th>
+              <th>status</th>
+          </tr>
+      </thead>
+      <tbody>
+  <tr *ngFor="let list of task">
+    <td><a [routerLink]="['/dashboard/edit_task',list.id]">{{list.id}}</a></td>
+    <td>{{list.taskName}}</td>
+    <td>{{list.assignee}}</td>
+    <td>{{list.priority}}</td>
+    <td>{{list.status}}</td>
+  </tr>
+  
+      </tbody>
+  </table>
+  

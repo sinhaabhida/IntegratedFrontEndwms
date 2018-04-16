@@ -1,0 +1,18 @@
+.container{
+    margin-top: 5%;
+}
+.container h2{
+    text-align: center;
+}
+.panel-login{
+    border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.form-inline input{
+    width: 80%;
+}
+.form-inline a{
+    cursor: pointer;
+}
